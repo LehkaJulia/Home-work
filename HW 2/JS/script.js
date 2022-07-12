@@ -1,7 +1,7 @@
-let year = prompt('Year of birthday?');
+const year = prompt('Year of birthday?');
 let name = prompt('Name?');
 let lastName = prompt('Last name?');
 
-const nowYear = Number(2022);
+let nowYear = Number(2022);
 
-console.log (name, lastName, nowYear - year );
+console.log ("User Bio:", name, lastName,nowYear - year, "years old");
