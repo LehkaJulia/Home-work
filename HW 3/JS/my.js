@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 const name = prompt('Name?');
 const lastName = prompt('Last name?');
 const day = Number(prompt('Day of birthday?'));
 const month = Number(prompt('Month of birthday?'));
 const year = Number(prompt('Year of birthday?'));
 const nowYear = 2022;
+=======
+let name = prompt('Name?');
+let lastName = prompt('Last name?');
+const day = Number(prompt('Day of birthday?'));
+const month = Number(prompt('Month of birthday?'));
+const year = Number(prompt('Year of birthday?'));
+const nowYear = Number(2022);
+>>>>>>> 5100d5c3747fdc3ac510b57a79f69d8b821e9713
 let dm = Number(month + "." + day);
 
 let zodiac
@@ -52,4 +61,8 @@ resultStr = `${laepYaer ? " (leap year)" : ""}`;
 
 
 
+<<<<<<< HEAD
 console.log ("User Bio:", name, lastName+",", nowYear - year, ("years old" + `${laepYaer ? " (leap year)" : ""}`)+",", zodiac+";");
+=======
+console.log ("User Bio:", name, lastName+",", nowYear - year, ("years old" + resultStr)+",", zodiac+";");
+>>>>>>> 5100d5c3747fdc3ac510b57a79f69d8b821e9713
