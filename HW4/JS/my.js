@@ -1,10 +1,14 @@
 const sentence = prompt('Write a text string, for exemple "How much is the fish?"');
-let IDCode = Number(prompt('Chose some operation: 1) unicode 2) delete 3) change to smile 4)letter'));
+let IDCode = Number(prompt(`Chose some operation: 
+1) Узнать unicode значение символа (по индексу). 
+2) Удалить символ из строки (по индексу).
+3) Заменит символ из строки (по индексу) на случайный смайлик.
+4) Узнать количество букв в строке (без пробелов).`));
 
 
 switch (IDCode){
   case 1:
-  let identityCode = Number(prompt('1) Enter the ID code'));
+  let identityCode = Number(prompt('1) Enter the Index'));
   console.log(sentence.charCodeAt(identityCode));
   break;
   case 2:
