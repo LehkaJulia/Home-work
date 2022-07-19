@@ -13,16 +13,18 @@ switch (IDCode){
   break;
   case 2:
   let deleteSymbol = Number(prompt('2) Enter the code for delete'));
-  let ddd = sentence.slice(0 , deleteSymbol); 
-  let ppp = sentence.slice(deleteSymbol+1)
+  let pieseStart = sentence.slice(0 , deleteSymbol); 
+  let pieseEnd = sentence.slice(deleteSymbol+1)
     
-  console.log(ddd+ppp)
+  console.log(pieseStart+pieseEnd)
   break;
   case 3:
   let changeSmileIndex = Number(prompt('3) Enter the code to change to smile'));
   let smileIndex = getRandomIntInclusive(0, 9)
   arr = [":)", "=)", ":’-)", ":’-D", ":-e", ":*)", ":-X", "(´｡• ᵕ •｡)", "(´･ᴗ･ )", "o(>ω<)o"];
-  console.log(sentence.replace(`${sentence[changeSmileIndex]}`, `${arr[smileIndex]}`));
+  let partStart = sentence.slice(0 , changeSmileIndex);
+  let partEnd = sentence.slice(changeSmileIndex+1)
+  console.log(partStart+`${arr[smileIndex]}`+partEnd)
   break;
   case 4:
   let withoutGap = sentence.replace(/\s/g, '');
