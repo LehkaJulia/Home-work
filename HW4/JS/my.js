@@ -23,8 +23,9 @@ switch (IDCode){
   let smileIndex = getRandomIntInclusive(0, 9)
   arr = [":)", "=)", ":’-)", ":’-D", ":-e", ":*)", ":-X", "(´｡• ᵕ •｡)", "(´･ᴗ･ )", "o(>ω<)o"];
   let partStart = sentence.slice(0 , changeSmileIndex);
-  let partEnd = sentence.slice(changeSmileIndex+1)
-  console.log(partStart+`${arr[smileIndex]}`+partEnd)
+  let partEnd = sentence.slice(changeSmileIndex+1);
+  
+  console.log(partStart+`${arr[smileIndex]}`+partEnd);
   break;
   case 4:
   let withoutGap = sentence.replace(/\s/g, '');
