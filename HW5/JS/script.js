@@ -2,11 +2,11 @@ const userAnswer = confirm(`Tell me three most important words 💚`);
 let i
 if (userAnswer) {
 
-    const wordCHeck = 3;
+    const wordCheck = 3;
     let finalStr = '';
   
 
-    for (i=1; i<=wordCHeck; i++){
+    for (i=1; i<=wordCheck; i++){
         
         let word,
             wordHasNumber;
@@ -56,7 +56,7 @@ if (userAnswer) {
         }
             console.log(word)
         finalStr += word;
-        finalStr += i===wordCHeck ? '!' : ' ';
+        finalStr += i===wordCheck ? '!' : ' ';
        
     }
     
