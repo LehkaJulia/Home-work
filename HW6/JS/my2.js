@@ -1,12 +1,12 @@
 let chooseFastfood;
 let costBun = 0;
-let hamburgerCost = 10;
-let cheeseburgerCost = 15;
-let smallPotatoesCost = 10;
-let middlePotatoesCost = 15;
-let bigPotatoesCost = 20;
-let ketchupCost = 2;
-let mayonnaiseСost = 3;
+const hamburgerCost = 10;
+const cheeseburgerCost = 15;
+const smallPotatoesCost = 10;
+const middlePotatoesCost = 15;
+const bigPotatoesCost = 20;
+const ketchupCost = 2;
+const mayonnaiseСost = 3;
 
 
 do{
