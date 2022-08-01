@@ -1,4 +1,4 @@
-let sports = [
+const sports = [
 	['skier','⛷'],
 	['snowboarder','🏂'],
 	['apple','🍎'],
@@ -28,7 +28,6 @@ let fruits = sports.slice(2,3).concat(sports.slice(7,9))
 
 console.log(fruits)
 
-
 document.write(`<ul>
 <li>***Winter sports***</li>
 <li>${winter_sports.join('</li><li>').replaceAll(',',': ')}
@@ -43,8 +42,3 @@ document.write(`<ul>
 </li>
 </ul>
 `)
-//for(i=0; i<winter_sports.length; i++){
-	
-//	winte_array = winter_sports[i].join(': ');
-//	console.log(winte_array )
-//}
