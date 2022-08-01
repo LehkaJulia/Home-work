@@ -4,6 +4,8 @@
 
 li {
     list-style: none;
-    text-align: center;
-    padding: 5px;
+    padding-left: 30px ;
+    padding-top: 5px;
+    border: 1px solid rgb(233, 232, 232);
+    height: 30px;
 }
