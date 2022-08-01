@@ -6,7 +6,7 @@ let rainbow = hero.concat(native,destination).reverse()
 rainbow.splice(0,2,`Richard`)
 rainbow.splice(3,1,'Gave','Battle','In','Vain')
 
-let color = [`red`, `orange` ,  `yellow`, `green`, `light`, `blue`, `violet`]
+const color = [`red`, `orange` ,  `yellow`, `green`, `light`, `blue`, `violet`]
 
 let final=[]
 
