@@ -44,3 +44,25 @@ function getInfo(arrey, heading) {
 getInfo(animals, `Animals`), 
 getInfo(food, `Food`), 
 getInfo(universes, `Universes`)
+
+// function getInfo(array, title) {
+//     let TRs = [];
+//     for(let i=0; i<array.length; i++){
+
+//         let TDs = [];
+//         for(let j=0; j<array[i].length; j++){
+//             TDs.push(`<td>${Array.isArray(array[i][j]) ? array[i][j].join(`; `) : array[i][j]}</td>`)
+//         }
+
+//         TRs.push(`<tr>${TDs.join(``)}</tr>`);
+//     };
+    
+//     document.write(`
+//         <table>
+//             <caption><b> ${title} info <b></caption>
+//             <tbody>
+//                 ${TRs.join(``)}
+//             </tbody>
+//         </table>
+//     `);
+// };
