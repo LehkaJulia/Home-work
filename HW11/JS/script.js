@@ -31,10 +31,23 @@ function summerValue(value){
 function winterValue(value){
 	return value*2;
 }
-console.log(getPrice(products, summerValue)); 
-console.log(getPrice(products, winterValue));
-console.log(getPrice(products));
 
+// console.log(getPrice(products, summerValue)); 
+// console.log(getPrice(products, winterValue));
+// console.log(getPrice(products));
 
+// const getPrice = (products, seasonFunc) => {
+//     products = JSON.parse(JSON.stringify(products));
+//     let suma = 0;
+//     for (let i = 0; i < products.length;i++) {
+//         suma += typeof seasonFunc === `function` 
+//             ? seasonFunc(products[i][1]) 
+//             : products[i][1];
+//     }
+//     return suma;
+// }
+
+// const summerValue = value => value*0.8;
+// const winterValue = value =>value*2;
 
 
