@@ -10,8 +10,9 @@ const obj = {
         p: 13
     }
 } 
-let newObj = {}
+
 function convert(object){
+    let newObj = {}
     for(let key in object){
         if(typeof object[key] === 'object'){ 
             newObj = Object.assign(newObj,object[key]);
@@ -22,3 +23,15 @@ function convert(object){
         return newObj
 }
 console.log(convert(obj))
+// const convert = list => {
+//     let newObj = {};
+
+//     for (let key in list) {
+//         if(typeof list[key] === 'object'){
+//             Object.assign(newObj, convert(list[key]))
+//         } else{
+//             newObj[key] = list[key];
+//         }
+//     }
+//     return newObj;
+// }
