@@ -2,27 +2,94 @@
     box-sizing: border-box;
 }
 
-img {
-    width: 100px;
-    height: 100px;
-    float: left;
-}
-.role-img{
-    width: 20px;
-    height: 20px;
-}
-.wrapper{
-    display: flex;
-    width: 600px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    background-color: aquamarine;
-    padding: 10px;
-    border-radius: 5px;
-    justify-content: space-between;
-    
 
-}
+
+.label, .user__info--role, .user__courses--course {
+    display: flex;
+    align-items: center;
+    background: #ece9ff;
+    border-radius: 4px;
+    padding: 5px 10px; }
+.users {
+    width: 750px;
+    margin: 20px auto; }
+  
+  .user {
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 15px 20px;
+    margin-bottom: 20px; }
+    .user:last-of-type {
+        margin-bottom: 0; }
+    .user__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; }
+    .user__info--data {
+        display: flex;
+        align-items: center; }
+    .user__info--role {
+        min-width: 70px;
+        justify-content: center; }
+    .user__info--role p {
+        margin: 0 0 0 5px;
+        text-transform: capitalize; }
+    .user__naming {
+      padding-left: 10px; }
+      .user__naming p {
+        margin: 0 0 3px 0; }
+    .user__courses {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; }
+    .user__courses--course {
+        margin: 0 10px 0 0; }
+    .user__courses--course:last-of-type {
+        margin-right: 0; }
+    .user__courses--course span {
+        padding: 2px 5px;
+        margin-left: 5px;
+        border-radius: 4px; }
+  
+  
 .role{
     width: 100px;
 }
+.satisfactory {
+    color: #F44336;
+    background-color: rgba(244, 67, 54, 0.1); }
+  
+  .good {
+    color: #673AB7;
+    background-color: rgba(103, 58, 183, 0.1); }
+  
+  .very-good {
+    color: #00BCD4;
+    background-color: rgba(0, 188, 212, 0.1); }
+  
+  .excellent {
+    color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1); }
+  
+  .student {
+    background-color: #ece9ff; }
+  
+  .admin {
+    background-color: #e9f2ff;
+    margin: 0 10px 0 0;
+    padding: 5px 10px;
+    border-radius: 4px;
+ }
+ .admin p{
+    margin-bottom: 5px;
+ }
+  .lector {
+    background-color: #ffe9e9;
+    margin: 0 10px 0 0;
+    padding: 5px 10px;
+    border-radius: 4px;
+ }
+ .lector p{
+    margin-bottom: 5px;
+ }

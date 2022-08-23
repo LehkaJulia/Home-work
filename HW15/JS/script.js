@@ -96,55 +96,72 @@ const users = [
 		]
 	}
 ];
+
+const getMark = mark => {
+    for(let key in gradation){
+        if(mark <= key){
+            return gradation[key];
+        }
+    }
+}
+
 class User{
     constructor(person){
         Object.assign(this, person) 
     }
 
     render(){
-        
-        // let info = `<div class="wrapper"><img src="images/users/${this.img}.png" alt="user"> <p>Name: ${this.name}</p> <p>Age: ${this.age} </p><div class="role"><img class="role-img" src="images/roles/${this.role}.png" alt="user">${this.role}</div> </div>`
-        return `<div class="wrapper">${this.getImg()}  ${this.getInfo()} ${this.renderCourses()} ${this.getRole()}  </div>`
-}
+		return `<div class="user">
+			<div class="user__info">
+				<div class="user__info--data">
+					${this.getImg()}
+					<div class="user__naming">
+						${this.getInfo()}
+					</div>
+				</div>
+				${this.getRole()}
+			</div>
+			${this.courses ? this.renderCourses() : ``}
+		</div>`;
+	}
   
 
     renderCourses(){
-        
-        let score
-        if(this.courses){
-      
-            this.courses.find(user => {
-                if(user["mark"]<=20){
-                    score = `<p>${user["title"]} ${gradation[20]}</p>`
-                    } else if(user["mark"]>20 && user["mark"]<=55){
-                        score = `<p>${user["title"]} ${gradation[55]}</p>`
-                    }else if(user["mark"]>55 && user["mark"]<=85){
-                        score = `<p>${user["title"]} ${gradation[85]}</p>`
-                    }else if(user["mark"]>85 && user["mark"]<=100){
-                        score = `<p>${user["title"]} ${gradation[100]}</p>`
-                    }
-            
-                
-                    
-            })
-            return `${score}`
-        } 
-            
-        
-            
-      
-        
+		const Lis = this.courses
+			.map(course => `<p class="user__courses--course student">${course.title} <span class="${getMark(course.mark)}">${getMark(course.mark)}</span></p>`)
+			.join('')
+		return `<div class="user__courses">${Lis}</div>`
     }
-      
-   getImg(){
-    return `<img src="images/users/${this.img}.png" alt="user"> `
-   }
-   getRole(){
-    return `<div class="role"><img class="role-img" src="images/roles/${this.role}.png" alt="user">${this.role}</div>`
-   }
-   getInfo(){
-    return `<p>Name: ${this.name}</p> <p>Age: ${this.age} </p>`
-   }
+    
+	getMark(mark){
+		let score
+                if(mark<=20){
+                    score = `${gradation[20]}`
+                    } else if(mark>20 && mark<=55){
+                        score = `${gradation[55]}`
+                    }else if(mark>55 && mark<=85){
+                        score = ` ${gradation[85]}`
+                    }else if(mark>85 && mark<=100){
+                        score = `${gradation[100]}`
+                    }   
+       
+            return `${score}`
+	}
+	
+	getImg(){
+			return `<img src="images/users/${this.img}.png" alt="${this.name}" height="50">`
+	}
+	
+	getRole(){
+			return `<div class="user__info--role ">
+				<img src="images/roles/${this.role}.png" alt="${this.role}" height="25">
+				<p>${this.role}</p>
+			</div>`
+	}
+
+	getInfo(){
+			return `<p>Name: ${this.name}</p> <p>Age: ${this.age} </p>`
+	}
 }
 
 class Student extends User{
@@ -152,68 +169,37 @@ class Student extends User{
         super(person);
     }
 }
+
 class Admin extends User{
     constructor(person){
         super(person);
     }
     
     renderCourses(){
-        let adminScore
-        this.courses.map(user => {
-
-            if(user["score"]<=20){
-                adminScore = (`${user["title"]} ${gradation[20]}`)
-            } else if(user["score"]>20 && user["score"]<=55){
-                adminScore = (`${user["title"]} ${gradation[55]}`)
-            }else if(user["score"]>55 && user["score"]<=85){
-                adminScore = (`${user["title"]} ${gradation[85]}`)
-            }else if(user["score"]>85 && user["score"]<=100){
-                adminScore = (`${user["title"]} ${gradation[100]}`)
-            }
-        })
-        return `${adminScore}`
-        
+		const Lis = this.courses
+			.map(course => `<div class=" admin"> <p>Title: ${course.title}</p>  <p>Admin's score: <span class="${getMark(course.score)}">${getMark(course.score)}</span></p> <p>Lector: ${course.lector}</p></div>`)
+			.join('')
+		return `<div class="user__courses">${Lis}</div>`
     }
 }
+
+
 class Lector extends User{
     constructor(person){
         super(person);
-        
     }
 
   
     renderCourses(){
-        let resultLecto
-        let resultStud
-        this.courses.map(user => {
-            
-            if(user["score"]<=20){
-                resultStud = ` ${gradation[20]}`
-            } else if(user["score"]>20 && user["score"]<=55){
-                resultStud=`${gradation[55]}`
-            }else if(user["score"]>55 && user["score"]<=85){
-                resultStud=` ${gradation[85]}`
-            }else if(user["score"]>85 && user["score"]<=100){
-                resultStud=` ${gradation[100]}`
-            }
-    
-            if(user["studentsScore"]<=20){
-                resultLecto= ` ${gradation[20]}`
-            } else if(user["studentsScore"]>20 && user["studentsScore"]<=55){
-                resultLecto=` ${gradation[55]}`
-            }else if(user["studentsScore"]>55 && user["studentsScore"]<=85){
-                resultLecto=` ${gradation[85]}`
-            }else if(user["studentsScore"]>85 && user["studentsScore"]<=100){
-                resultLecto=` ${gradation[100]}`
-            }
-           
-        })
-        return `${studentScore}: ${resultStud}  ${lectorScore}:${resultLecto}`
+		const Lis = this.courses
+			.map(course => `<div class="lector"><p> Title: ${course.title}</p> <p>Lector's score: <span class="${getMark(course.score)}">${getMark(course.score)}</span></p> <p>Average student's score: <span class="${getMark(course.studentsScore)}">${getMark(course.studentsScore)}</span></p> <p>Lector: ${course.lector}</p></div>`)
+			.join('')
+		return `<div class="user__courses">${Lis}</div>`
+		
     }
-    
+		
 }
-let studentScore = `Average student's score`
-let lectorScore = `Lector's score`
+
 const USERS_TYPES = {
     student: user => new Student (user),
     admin: user => new Admin (user),
@@ -223,9 +209,7 @@ let userClass = users
     .map(user => {
         return USERS_TYPES[user.role] ? USERS_TYPES[user.role](user) : new User(user);
     })
-    .map(user => {
-        console.log(user);
-        return user;
-    })
-    .forEach(user => document.write(user.render()))
-    
+    .map(user => user.render())
+	.join(``);
+
+document.write(`<div class="users">${userClass}</div>`)
