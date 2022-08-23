@@ -132,21 +132,6 @@ class User{
 			.join('')
 		return `<div class="user__courses">${Lis}</div>`
     }
-    
-	getMark(mark){
-		let score
-                if(mark<=20){
-                    score = `${gradation[20]}`
-                    } else if(mark>20 && mark<=55){
-                        score = `${gradation[55]}`
-                    }else if(mark>55 && mark<=85){
-                        score = ` ${gradation[85]}`
-                    }else if(mark>85 && mark<=100){
-                        score = `${gradation[100]}`
-                    }   
-       
-            return `${score}`
-	}
 	
 	getImg(){
 			return `<img src="images/users/${this.img}.png" alt="${this.name}" height="50">`
