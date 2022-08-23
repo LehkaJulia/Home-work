@@ -1,0 +1,28 @@
+* { 
+    box-sizing: border-box;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.role-img{
+    width: 20px;
+    height: 20px;
+}
+.wrapper{
+    display: flex;
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: space-between;
+    
+
+}
+.role{
+    width: 100px;
+}
