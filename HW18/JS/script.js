@@ -6,8 +6,6 @@ myDiv.style.left = 0;
 myDiv.style.top = 0;
 myDiv.style.backgroundColor = `#000000`;
 
-console.log(height)
-console.log(width)
 const setBgDiv = () => {
     const randomColor = Math.floor(Math.random()*16777215).toString(16);
     myDiv.style.backgroundColor = "#" + randomColor; 
