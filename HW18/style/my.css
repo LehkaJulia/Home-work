@@ -1,0 +1,13 @@
+* { 
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh; 
+}
+.block{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transition: 0.5s;
+}
