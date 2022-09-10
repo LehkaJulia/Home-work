@@ -55,7 +55,7 @@ const movingDown = block => {
         block.style.bottom = positionBottom + `px`
         block.innerHTML = textBams
         setTimeout(()=>{
-            block.innerHTML = `textBams`
+            block.innerHTML = ``
         }, 20000) 
     } else {
         block.style.bottom  = positionBottom - 10  +`px`;
