@@ -1,0 +1,26 @@
+* { 
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.block{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: relative;
+    transition: 0.5s;
+}
+.active{
+    background-color: blueviolet;
+}
+.text{
+    text-align: center;
+    font-size: 30px;
+    color: aliceblue;
+}
