@@ -17,8 +17,7 @@ const renderSelectCats = () => {
 }
 renderSelectCats ()
 
-jokesCategories.addEventListener(`change`, e=>{
-    e.preventDefault();
+jokesCategories.addEventListener(`change`, () =>{
 
     getData(API+`/random?category=${jokesCategories.value}`)
         .then(joke => {
