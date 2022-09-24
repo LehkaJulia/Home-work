@@ -21,7 +21,7 @@ jokesCategories.addEventListener(`change`, () =>{
 
     getData(API+`/random?category=${jokesCategories.value}`)
         .then(joke => {
-            let  disableCat = document.querySelector(`option[value=${jokesCategories.value}]`) 
+            let  disableCat = document.querySelector(`option[value="${jokesCategories.value}"]`) 
             disableCat.disabled=true;
             
             renderJoke(joke,disableCat);
