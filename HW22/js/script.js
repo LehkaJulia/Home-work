@@ -21,12 +21,10 @@ jokesCategories.addEventListener(`change`, () =>{
 
     getData(API+`/random?category=${jokesCategories.value}`)
         .then(joke => {
-        let  disableCat = [...document.querySelectorAll('option')]
-            .filter(element => element.selected==true);
-
-        disableCat[0].disabled=true;
-         
-        renderJoke(joke,disableCat);
+            let  disableCat = document.querySelector(`option[value=${jokesCategories.value}]`) 
+            disableCat.disabled=true;
+            
+            renderJoke(joke,disableCat);
         })
 
 });
@@ -40,14 +38,13 @@ const renderJoke = (joke,disableCat) => {
     removeBtn.innerHTML = `Remove joke`;
     removeBtn.addEventListener(`click`, () => {
         jokeLi.remove();
-        
-        disableCat[0].disabled=false; 
+
+        disableCat.disabled=false;
     });
 
     jokeLi.append(removeBtn);
 
     jokesList.prepend(jokeLi); 
 };
-
 
 
