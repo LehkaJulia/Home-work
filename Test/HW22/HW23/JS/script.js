@@ -23,99 +23,125 @@ const createComics = document.querySelector(`#createComics`)
 const createFavourite = document.querySelector(`#createFavourite`)
 const table = document.createElement(`table`)
 
-const renderNewTR = async () => {
-    let heroes = await controller(API+`/heroes`);
-    
-    table.innerHTML = heroes
-        .map(arrHeroes => `<tr>
-            <td>${arrHeroes.name}</td>
-            <td>${arrHeroes.comics}</td>
-            <td>
-                <input type="checkbox" ${arrHeroes.favourite===true ? `checked` : ``} id="${arrHeroes.id}"></input>
-            </td>
-            <td><button id="${arrHeroes.id}">Delete</button></td>
-        </tr>`)
-        .join(``);
-    } 
-controller(API + `/heroes`)
-    .then(arrHeroes => {
-        // console.log(arrHeroes);
+const renderTask = hero => {
+    let tr = document.createElement(`tr`);
+    tr.id = hero.id;
+    tr.innerHTML = `<td>${hero.name}</td>
+        <td>${hero.comics}</td>
+        <td>
+            <input type="checkbox" ${hero.favourite===true ? `checked` : ``} id="${hero.id}"></input>
+        </td>`;
+
+    let tdBtns = document.createElement(`td`);
+
+    let btn = document.createElement(`button`);
+    btn.id = hero.id;
+    btn.innerHTML = `Delete`;
+
+
+    btn.addEventListener(`click`,async () => {
+        await controller(API + `/heroes/${element.id}`, `DELETE`);
+        tr.remove();
+    })
+
+    tdBtns.append(btn);
+
+    tr.append(tdBtns);
+
+    table.append(tr);
+}
+
+createHero.addEventListener(`submit`, async e=>{
+    e.preventDefault();
+    try{
+        let newHero = {
+            name: createName.value,
+            comics: createComics.value,
+            favourite: createFavourite.checked
+        }
         
-        table.innerHTML = `<tr>
+        let storageHeroes = await controller(API+`heroes`);
+        let existingHeroes = storageHeroes.find(task => task.name.toLowerCase() === createName.value.toLowerCase());
+        
+        if(existingHeroes){
+            alert(`Такий герой вже існує`)
+            return;
+        } else{
+            let addedHero = await controller(API+`heroes`, `POST`, newHero);
+            console.log(`Hero ${newHero.name} successfully added`, addedHero);
+
+            renderTR(addedHero);
+        }
+
+    } catch(err){
+        console.log(`In catch:`, err);
+    }
+    
+})
+
+const renderTR = async hero => {
+    let tr = document.createElement(`tr`);
+    tr.innerHTML = `<td>${hero.name}</td>
+    <td>${hero.comics}</td>`;
+
+    let tdFav = document.createElement(`td`);
+    let inputFav = document.createElement(`input`);
+    inputFav.type = `checkbox`;
+    inputFav.checked = hero.favourite;
+    inputFav.addEventListener(`change`, async () => {
+        let changeFav = await controller(API+`/heroes/${hero.id}`, `PUT`, {favourite: inputFav.checked});
+        console.log(`Hero ${hero.name} successfully changed`, changeFav);
+    });
+
+    tdFav.append(inputFav);
+
+    let tdDel = document.createElement(`td`);
+    let btnDel = document.createElement(`button`);
+    btnDel.innerHTML = `Delete`;
+    btnDel.addEventListener(`click`, async () => {
+        let delHero = await controller(API+`/heroes/${hero.id}`, `DELETE`);
+        console.log(`Hero ${hero.name} successfully deleted`, delHero);
+        tr.remove();
+    });
+
+    tdDel.append(btnDel);
+    
+    tr.append(tdFav, tdDel);
+
+    let tbody = document.querySelector(`table#heroes tbody`);
+    tbody.append(tr);
+} 
+
+const renderTable = () => {
+    let table = document.createElement(`table`);
+    table.id = `heroes`;
+    table.innerHTML = `<thead>
+        <tr>
             <th>Name</th>
             <th>Comics</th>
             <th>Favourite</th>
             <th>Actions</th>
-        </tr>`
-        arrHeroes.map(hero => {
-            hero = `<tr>
-                <td>${hero.name}</td>
-                <td>${hero.comics}</td>
-                <td>
-                    <input type="checkbox" ${hero.favourite===true ? `checked` : ``} id="${hero.id}"></input>
-                </td>
-                <td><button id="${hero.id}">Delete</button></td>
-            </tr>`
-            table.innerHTML+=hero
+        </tr>
+    </thead>
+    <tbody></tbody>`;
 
-            
+    body.append(table);
+}
 
-        })
-        
-        body.append(table);
+const renderStorageHeroes = async () => {
+    let heroes = await controller(API+`heroes`);
+    heroes.forEach(hero => renderTR(hero));
+}
 
-        
-          
-        const input = document.querySelectorAll('table input')
-            .forEach(element  => {
-                element.addEventListener(`change`, async () => {
-                    let inputChekc = {
-                        favourite: element.checked
-                    }
-                   await controller(API + `/heroes/${element.id}`, `PUT`, inputChekc)
-                    
-                    })
-            
-                
-            }); 
-
-        const btn = document.querySelectorAll(`table button`)
-        .forEach(element => {
-            element.addEventListener(`click`,async () => {
-                await controller(API + `/heroes/${element.id}`, `DELETE`);
-                
-                console.dir(element)
-                // renderNewTR();
-                })
-            
-        }); 
-
-        createHero.addEventListener(`submit`, async e=>{
-            e.preventDefault();
-            try{
-                let newHero = {
-                    name: createName.value,
-                    comics: createComics.value,
-                    favourite: createFavourite.checked
-                }
-                
-                let storageHeroes = await controller(API+`/heroes`);
-                let existingHeroes = storageHeroes.find(task => task.name.toLowerCase() === createName.value.toLowerCase());
-                
-                if(existingHeroes){
-                    alert(`Такий герой вжt існує`)
-                    return;
-                } else{
-                    controller(API+`/heroes`, `POST`, newHero);
-                }
+const renderComics = async () => {
+    // let universes = await controller(API+`universes`); – мабуть не створила у себе табличку
+    let universes = [`Marvel`, `DC`];
     
-            } catch(err){
-                console.log(`In catch:`, err);
-            }
-            
-        })
-    })
+    createComics.innerHTML = universes
+        .map(item => `<option value="${item}">${item}</option>`)
+        .join(``);
+}
 
-
- 
-
+renderComics();
+renderTable();
+renderStorageHeroes();
