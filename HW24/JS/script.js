@@ -3,7 +3,6 @@ $(document).ready(function() {
        
         const CarsColorsArr = JSON.parse(data)
         const allColors = $('.color');
-        console.log(CarsColorsArr)
         
         allColors.each(
             
