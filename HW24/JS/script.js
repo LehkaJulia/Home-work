@@ -3,6 +3,7 @@ $(document).ready(function() {
        
         const CarsColorsArr = JSON.parse(data)
         const allColors = $('.color');
+        console.log(CarsColorsArr)
         
         allColors.each(
             
@@ -13,7 +14,9 @@ $(document).ready(function() {
                 $(item).click(function() {
                     
                     $('div.imgCar').html(`<img src="https://mc-astro.github.io/tesla-roadster-colors/img/${CarsColorsArr[index].img}.jpg" alt="${CarsColorsArr[index].title}"><p>${CarsColorsArr[index].title}</p>`);
-                   
+                    $('div.imgCar').css(`display`, `none`)
+                    $('div.imgCar').fadeIn()
+
                 });
 
             }
