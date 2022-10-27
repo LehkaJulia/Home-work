@@ -14,41 +14,13 @@ const controller = async (url, method=`GET`, obj) => {
     return response;
 }
 
-const API = `https://61c9d37520ac1c0017ed8eac.mockapi.io`
+const API = `https://63381760132b46ee0bea3fde.mockapi.io`
 const body = document.querySelector(`body`)
 const createHero = document.querySelector(`form`)
 const createName = document.querySelector(`#createName`)
 const createComics = document.querySelector(`#createComics`)
 const createFavourite = document.querySelector(`#createFavourite`)
 const table = document.createElement(`table`)
-
-const renderTask = hero => {
-    let tr = document.createElement(`tr`);
-    tr.id = hero.id;
-    tr.innerHTML = `<td>${hero.name}</td>
-        <td>${hero.comics}</td>
-        <td>
-            <input type="checkbox" ${hero.favourite===true ? `checked` : ``} id="${hero.id}"></input>
-        </td>`;
-
-    let tdBtns = document.createElement(`td`);
-
-    let btn = document.createElement(`button`);
-    btn.id = hero.id;
-    btn.innerHTML = `Delete`;
-
-
-    btn.addEventListener(`click`,async () => {
-        await controller(API + `/heroes/${element.id}`, `DELETE`);
-        tr.remove();
-    })
-
-    tdBtns.append(btn);
-
-    tr.append(tdBtns);
-
-    table.append(tr);
-}
 
 createHero.addEventListener(`submit`, async e=>{
     e.preventDefault();
