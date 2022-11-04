@@ -1,34 +1,24 @@
-import React, { Component } from 'react';
-import Item from '../Item/Item';
+import React, { Component, Fragment } from 'react';
 
-const list = [
-    {
-      id: 1,
-      title: `Task 1`
-    },
-    {
-      id: 2,
-      title: `Task 2`
-    },
-    {
-      id: 3,
-      title: `Task 3`
-    },
-    {
-      id: 4,
-      title: `Task 4`
-    }
-  ]
 
 class List extends Component {
-
+    
+    
     render() {
-        return (
+        let { list, actions } = this.props;
+    
+        return Array.isArray(list) && list.length ? (
+          <Fragment>
             <ul>
-                <Item list={list}/>            
+              {list.map((item) => (
+                <li key={item.id}>{item.title}</li>
+              ))}
             </ul>
-        );
-    }
+    
+            {actions.map((item,index) => <button key={index} onClick={item.action}>{item.text}</button>)}
+          </Fragment>
+        ) : null;
+      }
 }
 
 export default List;
